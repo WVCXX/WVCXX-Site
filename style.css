@@ -192,10 +192,30 @@ body {
   color: #00ffcc;
   font-family: monospace;
   padding: 20px;
-  display: none;
   z-index: 9998;
+  overflow: hidden;
 }
 
-#terminal-text {
+#terminal-content{
   white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.cursor::after{
+  content: "_";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% {opacity: 1;}
+  25%, 75% {opacity: 0;}
+}
+
+#main-content{
+  opacity: 0;
+  transition: opacity 1.5 ease;
+}
+
+#main-content.show{
+  opacity: 1;
 }

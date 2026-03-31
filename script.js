@@ -101,33 +101,45 @@ function updateLoader() {
 
 updateLoader();
 
-const terminal = document.getElementById("terminal");
-const terminalText = document.getElementById("terminal-text");
+const terminal = document.getElementById("terminal-content");
 
-const commands = [
-  "root@system:~$ initializing kernel...",
-  "loading modules...",
-  "bypassing firewall...",
-  "injecting payload...",
+const lines = [
+  "root@system:~$ booting...",
+  "loading kernel modules...",
+  "checking system integrity...",
+  "bypassing security...",
   "access granted ✔",
-  "welcome, user"
+  "",
+  "welcome."
 ];
 
-function startTerminal() {
-  terminal.style.display = "block";
-  let i = 0;
+let lineIndex = 0;
+let charIndex = 0;
 
-  function typeLine() {
-    if (i < commands.length) {
-      terminalText.innerHTML += commands[i] + "\n";
-      i++;
-      setTimeout(typeLine, 500);
-    } else {
-      setTimeout(() => {
-        terminal.style.display = "none";
-      }, 1000);
-    }
+function typeTerminal() {
+  if (lineIndex >= lines.length) {
+    // через 1 сек закрываем терминал
+    setTimeout(() => {
+      document.getElementById("terminal").style.display = "none";
+    }, 1000);
+    return;
   }
 
-  typeLine();
+  const currentLine = lines[lineIndex];
+
+  if (charIndex < currentLine.length) {
+    terminal.innerHTML += currentLine.charAt(charIndex);
+    charIndex++;
+    setTimeout(typeTerminal, 30);
+  } else {
+    terminal.innerHTML += "\n";
+    lineIndex++;
+    charIndex = 0;
+    setTimeout(typeTerminal, 300);
+  }
 }
+
+// запуск при загрузке страницы
+window.onload = () => {
+  typeTerminal();
+};
