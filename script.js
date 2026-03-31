@@ -29,7 +29,7 @@ canvas.height = window.innerHeight;
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%";
 const fontSize = 16;
-const columns = canvas.width/fontSize;
+const columns = Math.max(1, Math.floor(canvas.width / fontSize));
 const drops = Array(columns).fill(1);
 
 function drawMatrix() {
@@ -55,4 +55,79 @@ for(let i=0;i<100;i++){
   particle.style.left=Math.random()*window.innerWidth+"px";
   particle.style.animationDuration=(2+Math.random()*3)+"s";
   particleContainer.appendChild(particle);
+}
+const loadingPhrases = [
+  "Инициализация",
+  "Подключение к системе",
+  "Обход всех блокировок",
+  "Доступ получен"
+];
+
+const loadingText = document.getElementById("loading-text");
+const progress = document.querySelector(".progress");
+const loader = document.getElementById("loader");
+
+let progressValue = 0;
+let phraseIndex = 0;
+
+function updateLoader() {
+  if (progressValue >= 100) {
+    progressValue = 100;
+    progress.style.width = "100%";
+    loadingText.innerText = "Добро пожаловать.";
+
+    setTimeout(() => {
+      loader.classList.add("fade-out");
+    }, 500);
+
+    setTimeout(() => {
+      loader.style.display = "none";
+      startTerminal(); 
+    }, 1500);
+
+    return;
+  }
+
+  progressValue += Math.random() * 8;
+  progress.style.width = progressValue + "%";
+
+  if (Math.random() > 0.7 && phraseIndex < loadingPhrases.length) {
+    loadingText.innerText = loadingPhrases[phraseIndex];
+    phraseIndex++;
+  }
+
+  setTimeout(updateLoader, 200);
+}
+
+updateLoader();
+
+const terminal = document.getElementById("terminal");
+const terminalText = document.getElementById("terminal-text");
+
+const commands = [
+  "root@system:~$ initializing kernel...",
+  "loading modules...",
+  "bypassing firewall...",
+  "injecting payload...",
+  "access granted ✔",
+  "welcome, user"
+];
+
+function startTerminal() {
+  terminal.style.display = "block";
+  let i = 0;
+
+  function typeLine() {
+    if (i < commands.length) {
+      terminalText.innerHTML += commands[i] + "\n";
+      i++;
+      setTimeout(typeLine, 500);
+    } else {
+      setTimeout(() => {
+        terminal.style.display = "none";
+      }, 1000);
+    }
+  }
+
+  typeLine();
 }
