@@ -242,7 +242,7 @@ const commands = {
   
   skills: () => 'Навыки:\n› Python, JavaScript\n› Веб-разработка (HTML/CSS/React)\n› Базы данных (SQL, MongoDB)\n› Кибербезопасность (основы)\n› UI/UX дизайн\n› Linux системное администрирование',
   
-  projects: () => 'Проекты:\n› Сайт-портфолио (HTML/CSS/JS)\n› Telegram боты\n› Система подсчета стажа (Python/Tkinter)\n› Сканер уязвимостей (в разработке)',
+  projects: () => 'Проекты:\n› Сайт-портфолио (HTML/CSS/JS)\n› Telegram боты\n›',
   
   contact: () => 'Связь со мной:\n› Telegram: @WVCXX\n› GitHub: github.com/WVCXX\n› VK: vk.com/wfzxcqqq666\n› Steam: steamcommunity.com/profiles/76561198837106190',
   
@@ -260,7 +260,7 @@ const commands = {
     const secretPage = document.getElementById('secret404');
     if (secretPage) {
       secretPage.classList.add('show');
-      return '🔓 Секретная страница открыта...';
+      return 'Секретная страница открыта...';
     }
     return 'Ошибка: секретная страница не найдена';
   },
