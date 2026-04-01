@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -11,28 +10,80 @@
 
 <canvas id="matrix"></canvas>
 
-<div class="container">
-  <h1 id="intro"></h1>
-  <ul class="links">
-    <li><a href="https://github.com/WVCXX" target="_blank"><img src="icons/github.png" alt="GitHub"> GitHub</a></li>
-    <li><a href="https://gitlab.com/" target="_blank"><img src="icons/gitlab.png" alt="GitLab"> GitLab</a></li>
-    <li><a href="https://steamcommunity.com/profiles/76561198837106190/" target="_blank"><img src="icons/steam.png" alt="Steam"> Steam</a></li>
-    <li><a href="https://t.me/WVCXX" target="_blank"><img src="icons/telegram.png" alt="Telegram"> Telegram</a></li>
-    <li><a href="https://vk.com/wfzxcqqq666" target="_blank"><img src="icons/vk.png" alt="VK"> ВКонтакте</a></li>
-  </ul>
+<div id="terminal">
+  <div class="terminal-bg-gif">
+    <img src="images/bg.gif" alt="Terminal Background">
+  </div>
+  <pre id="terminal-content"></pre>
+  <div class="terminal-cursor"></div>
 </div>
-<div id="loader">
-  <div class="loader-content">
-    <h2 id="loading-text"></h2>
-    <div class = "progress-bar">
-      <div class="progress">
-   </div>
+
+<div id="main-content" class="main-content">
+  <div class="container">
+    <h1 id="intro"></h1>
+    <ul class="links">
+      <li><a href="https://github.com/WVCXX" target="_blank"><img src="icons/github.png" alt="GitHub"> <span>GitHub</span></a></li>
+      <li><a href="https://gitlab.com/" target="_blank"><img src="icons/gitlab.png" alt="GitLab"> <span>GitLab</span></a></li>
+      <li><a href="https://steamcommunity.com/profiles/76561198837106190/" target="_blank"><img src="icons/steam.png" alt="Steam"> <span>Steam</span></a></li>
+      <li><a href="https://t.me/WVCXX" target="_blank"><img src="icons/telegram.png" alt="Telegram"> <span>Telegram</span></a></li>
+      <li><a href="https://vk.com/wfzxcqqq666" target="_blank"><img src="icons/vk.png" alt="VK"> <span>ВКонтакте</span></a></li>
+    </ul>
   </div>
 </div>
-<div id="terminal">
-  <pre id="terminal-content"></pre>
+
+<div class="terminal-commands" id="terminalCommands" style="display: none;">
+  <div class="terminal-header">
+    <span class="terminal-title">WVCXX@terminal:~</span>
+    <button class="terminal-close">✕</button>
+  </div>
+  <div class="terminal-body">
+    <div class="terminal-output" id="terminalOutput">
+      <div>Введите 'help' для списка команд</div>
+    </div>
+    <div class="terminal-input-line">
+      <span class="prompt">$></span>
+      <input type="text" id="commandInput" class="command-input" autofocus>
+    </div>
+  </div>
 </div>
+
+<div class="theme-switcher">
+  <button class="theme-btn" data-theme="cyber">
+    <img src="icons/cyber.png" alt="Cyber" class="theme-icon-img">
+  </button>
+  <button class="theme-btn" data-theme="matrix">
+    <img src="icons/matrix.png" alt="Matrix" class="theme-icon-img">
+  </button>
+  <button class="theme-btn" data-theme="neon">
+    <img src="icons/neon.png" alt="Neon" class="theme-icon-img">
+  </button>
+</div>
+
+<button id="openTerminal" class="terminal-trigger">
+  <img src="icons/terminal.png" alt="Terminal" class="terminal-icon-img">
+  <span>TERMINAL</span>
+</button>
+
 <div class="particles"></div>
+
+<div id="secret404" class="secret-page" style="display: none;">
+  <div class="secret-content">
+    <h1>404</h1>
+    <p>Вы нашли секретную страницу!</p>
+    <p>Здесь ничего нет... или есть?</p>
+    <button id="closeSecret">Закрыть</button>
+  </div>
+</div>
+
+<div class="eye-container">
+  <div class="eye">
+    <div class="pupil"></div>
+  </div>
+  <div class="eye">
+    <div class="pupil"></div>
+  </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
